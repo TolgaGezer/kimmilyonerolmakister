@@ -1,0 +1,343 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace ödev
+{
+    public partial class Form2 : Form
+    {
+        public Form2()
+        {
+            InitializeComponent();
+        }
+       
+        int süre = 30;
+        int sorusayisi=1;
+        int kazanilanmiktar;
+        string[] sorular = new string[10];
+        string[] dogrucevap = new string[10];
+        string[] cevapsikki1 = new string[10];
+        string[] cevapsikki2 = new string[10];
+        string[] cevapsikki3 = new string[10];
+        string[] cevapsikki4 = new string[10];
+        int i= 0;
+
+
+        
+        string verilencevap = "";
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            button5.Visible = false;
+            label2.Text = "30";
+            radioButton1.Visible = false;
+            radioButton2.Visible = false;
+            radioButton3.Visible = false;
+            radioButton4.Visible = false;
+            button7.Visible = false;
+            radioButton1.Checked = false;
+            radioButton2.Checked = false;
+            radioButton3.Checked = false;
+            radioButton4.Checked = false;
+            label6.Text = kazanilanmiktar.ToString();
+            
+            progressBar1.Value = sorusayisi;
+
+            if (sorusayisi < 2)
+            {
+                button7.Visible = false;
+            }
+            
+        }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            progressBar1.Minimum = 1;
+            progressBar1.Maximum = 10;
+            
+            timer1.Interval = 1000;
+            süre--;
+            label2.Text = süre.ToString();
+            if (süre == 0)
+            {
+                label2.Text = "0";
+                MessageBox.Show("Yeterli vakti kullanamadınız."+kazanilanmiktar+" TL İle yarışmayı sonlandırdınız.");
+                Application.Exit();
+
+            }
+            
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (sorusayisi == 2)
+                MessageBox.Show("Oyundan çekildiniz ve 500 TL Kazandınız");
+            else if (sorusayisi == 3)
+                MessageBox.Show("Oyundan çekildiniz ve 1.000 TL Kazandınız");
+            else if (sorusayisi == 4)
+                MessageBox.Show("Oyundan çekildiniz ve 3.000 TL Kazandınız");
+            else if (sorusayisi == 5)
+                MessageBox.Show("Oyundan çekildiniz ve 5.000 TL Kazandınız");
+            else if (sorusayisi == 6)
+                MessageBox.Show("Oyundan çekildiniz ve 7.000 TL Kazandınız");
+            else if (sorusayisi == 7)
+                MessageBox.Show("Oyundan çekildiniz ve 9.500 TL Kazandınız");
+            else if (sorusayisi == 8)
+                MessageBox.Show("Oyundan çekildiniz ve 12.000 TL Kazandınız");
+            else if (sorusayisi == 9)
+                MessageBox.Show("Oyundan çekildiniz ve 15.000 TL Kazandınız");
+            else if (sorusayisi == 10)
+                MessageBox.Show("Oyundan çekildiniz ve 18.000 TL Kazandınız");
+            Application.Restart();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+                button8.Text = "CEVAPLA";
+                
+                timer1.Start();
+                radioButton1.Visible = true;
+                radioButton2.Visible = true;
+                radioButton3.Visible = true;
+                radioButton4.Visible = true;
+             
+                sorular[0] = ("2002 yılında dünya kupasında 3. Olan Türkiye'nin teknik direktörü kimdir?");
+                cevapsikki1[0] = "A)Şenol Güneş";
+                cevapsikki2[0] = "B)Fatih Terim";
+                cevapsikki3[0] = "C)Mircea Lucescu";
+                cevapsikki4[0] = "D)Şota Arveladze";
+                dogrucevap[0] = "A)Şenol Güneş";
+                sorular[1] = ("Sayısal verilere göre günümüz çağında en çok kullanılan mobil program hangisidir?");
+                cevapsikki1[1] = "A)Instagram";
+                cevapsikki2[1] = "B)Twitter";
+                cevapsikki3[1] = "C)Facebook";
+                cevapsikki4[1] = "D)WhatsApp";
+                dogrucevap[1] = "D)WhatsApp";
+                sorular[2] = ("Aşağıdakilerden hangisi bir MOBA oyunudur?");
+                cevapsikki1[2] = "A)Battlefield V";
+                cevapsikki2[2] = "B)League Of Legends";
+                cevapsikki3[2] = "C)Fortnite";
+                cevapsikki4[2] = "D)Metin2";
+                dogrucevap[2] = "B)League Of Legends";
+                sorular[3] = ("Aşağıdakilerden hangisi bilgisayarın bir parçası değildir?");
+                cevapsikki1[3] = "A)Fön Makinesi";
+                cevapsikki2[3] = "B)Anakart";
+                cevapsikki3[3] = "C)Ekran Kartı";
+                cevapsikki4[3] = "D)Mouse";
+                dogrucevap[3] = "A)Fön Makinesi";
+                sorular[4] = ("2002 yılında dünya kupasında en erken golü atan futbolcumuz kimdir?");
+                cevapsikki1[4] = "A)Arif Erdem";
+                cevapsikki2[4] = "B)İlhan Mansız";
+                cevapsikki3[4] = "C)Hakan Şükür";
+                cevapsikki4[4] = "D)Şota Arveladze";
+                dogrucevap[4] = "C)Hakan Şükür";
+                sorular[5] = ("Şuan ki cumhurbaşkanımız kimdir?");
+                cevapsikki1[5] = "A)Recep Tayyip Erdoğan";
+                cevapsikki2[5] = "B)Doğu Perinçek";
+                cevapsikki3[5] = "C)Binali Yıldırım";
+                cevapsikki4[5] = "D)Abdullah Gül";
+                dogrucevap[5] = "A)Recep Tayyip Erdoğan";
+                sorular[6] = ("Ege Üniversitesi League Of Legends Takımının İsmi Nedir?");
+                cevapsikki1[6] = "A)DANK";
+                cevapsikki2[6] = "B)DANQ";
+                cevapsikki3[6] = "C)DANKE";
+                cevapsikki4[6] = "D)DDNQ";
+                dogrucevap[6] = "A)DANK";
+                sorular[7] = ("2020 Yılında patlak veren yarasadan geldiği düşünülen hastalığın adı nedir?");
+                cevapsikki1[7] = "A)COVID-19";
+                cevapsikki2[7] = "B)Verem";
+                cevapsikki3[7] = "C)Siğil";
+                cevapsikki4[7] = "D)Kanser";
+                dogrucevap[7] = "A)COVID-19";
+                sorular[8] = ("2020 Yılında savaş naraları patlak verildiğini biliyoruz. Bu patlak hangi ülkeler arasında patlak vermiştir?");
+                cevapsikki1[8] = "A)Amerika-Irak";
+                cevapsikki2[8] = "B)Türkiye-Suriye";
+                cevapsikki3[8] = "C)Meksika-Amerika";
+                cevapsikki4[8] = "D)Romanya-Avusturalya";
+                dogrucevap[8] = "A)Amerika-Irak";
+                sorular[9] = ("Aşağıdakilerden hangisi Türkiye'nin kardeş ülke dediği ülkedir?");
+                cevapsikki1[9] = "A)Amerika";
+                cevapsikki2[9] = "B)Azerbaycan";
+                cevapsikki3[9] = "C)Romanya";
+                cevapsikki4[9] = "D)Ürdün";
+                dogrucevap[9] = "B)Azerbaycan";
+
+                
+                
+
+                radioButton1.Text = cevapsikki1[i];
+                radioButton2.Text = cevapsikki2[i];
+                radioButton3.Text = cevapsikki3[i];
+                radioButton4.Text = cevapsikki4[i];
+
+                label3.Text = sorusayisi + "-" + sorular[i];
+
+
+                if (verilencevap == dogrucevap[i])
+                {
+                    MessageBox.Show("Tebrikler doğru bildiniz.");
+                    süre = 30;
+                    i++;
+                    sorusayisi = sorusayisi + 1;
+                    label3.Text = sorusayisi + "-" + sorular[i];
+                    radioButton1.Text = cevapsikki1[i];
+                    radioButton2.Text = cevapsikki2[i];
+                    radioButton3.Text = cevapsikki3[i];
+                    radioButton4.Text = cevapsikki4[i];
+                    button7.Visible = true;
+                    radioButton1.Checked = false;
+                    radioButton2.Checked = false;
+                    radioButton3.Checked = false;
+                    radioButton4.Checked = false;
+                    
+                    
+                    progressBar1.Value = sorusayisi;
+                   
+                    label6.Text = kazanilanmiktar.ToString();
+                    if (sorusayisi == 1)
+                    {
+                        kazanilanmiktar = 0;
+                        label6.Text = kazanilanmiktar.ToString();
+                    }
+                    if (sorusayisi == 2)
+                    {
+                        kazanilanmiktar = 500;
+                        label6.Text = kazanilanmiktar.ToString();
+                    }
+                    if (sorusayisi == 3)
+                    {
+                        kazanilanmiktar = 1000;
+                        label6.Text = kazanilanmiktar.ToString();
+                    }
+                    if (sorusayisi == 4)
+                    {
+                        kazanilanmiktar = 3000; label6.Text = kazanilanmiktar.ToString();
+                    }
+                    if (sorusayisi == 5)
+                    {
+                        kazanilanmiktar = 5000; label6.Text = kazanilanmiktar.ToString();
+                   }
+                    if (sorusayisi == 6)
+                    {
+                        kazanilanmiktar = 7000; label6.Text = kazanilanmiktar.ToString();
+                    }
+                    if (sorusayisi == 7)
+                    {
+                        kazanilanmiktar = 9500; label6.Text = kazanilanmiktar.ToString();
+                    }
+                    if (sorusayisi == 8)
+                    {
+                        kazanilanmiktar = 12000; label6.Text = kazanilanmiktar.ToString();
+                    }
+                    if (sorusayisi == 9)
+                    {
+                        kazanilanmiktar = 15000; label6.Text = kazanilanmiktar.ToString();
+                    }
+                    if (sorusayisi == 10)
+                    {
+                        kazanilanmiktar = 18000; label6.Text = kazanilanmiktar.ToString();
+                        if (verilencevap == dogrucevap[i])
+                        {
+                            MessageBox.Show("BÜYÜK ÖDÜLÜ KAZANDINIZ" + kazanilanmiktar + " TL");
+                        }
+
+                    }
+                
+                
+                    
+                    
+                   
+
+
+                    
+                }
+               button5.Visible=true;
+               if (jokerhak == 0)
+               {
+                   button5.Visible = false;
+               }
+               
+               
+                   
+                }
+      
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+             verilencevap = radioButton4.Text;
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            verilencevap = radioButton3.Text;
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            verilencevap = radioButton2.Text;
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            verilencevap = radioButton1.Text;
+        }
+        int jokerhak = 1;
+        private void button5_Click(object sender, EventArgs e)
+        {
+
+            jokerhak = 0;
+            
+            if (dogrucevap[i] == cevapsikki1[i])
+            {
+                radioButton2.Enabled = false;
+                radioButton4.Enabled = false;
+                if (verilencevap == dogrucevap[i])
+                {
+                    radioButton2.Enabled = true;
+                    radioButton4.Enabled = true;
+                }
+             
+
+            }
+            if (dogrucevap[i] == cevapsikki2[i])
+            {
+                radioButton1.Enabled = false;
+                radioButton3.Enabled = false;
+               
+            }
+            if (dogrucevap[i] == cevapsikki3[i])
+            {
+                radioButton4.Enabled = false;
+                radioButton2.Enabled = false;
+               
+            }
+            if (dogrucevap[i] == cevapsikki4[i])
+            {
+               
+                    radioButton1.Enabled = false;
+                    radioButton3.Enabled = false;
+               
+                
+            }
+            if (jokerhak == 0)
+            {
+                button5.Visible = false;
+            }
+        }
+
+            }
+
+        
+            
+            
+        }
+
+
